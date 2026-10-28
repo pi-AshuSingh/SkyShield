@@ -1,0 +1,17 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "skyshield_sms.db",
+      "server.py",
+      "generate_incidents.py",
+      "build_colab_notebook.py"
+    ]
+  }
+}

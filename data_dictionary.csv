@@ -1,0 +1,16 @@
+column_name,data_type,sample_value_1,sample_value_2,sample_value_3,nullable,description
+incident_id,VARCHAR(16) / String,DGCA-2026-0001,DGCA-2026-0002,DGCA-2026-5000,No,Unique official incident identifier conforming to DGCA CAR Section 5 Series C Part I reporting syntax (DGCA-YYYY-XXXX).
+reported_at,DATETIME / ISO 8601,2026-04-19T11:07:46Z,2024-09-13T10:19:36Z,2026-10-20T21:40:00Z,No,Universal Time Coordinated (UTC) timestamp marking when the aviation occurrence was formally ingested into the safety management system.
+flight_number,VARCHAR(10) / String,AI-101,6E-204,UK-812,No,Commercial airline flight number active during occurrence (IATA 2-letter airline code followed by 3–4 digits).
+airline,VARCHAR(30) / Categorical,Air India,IndiGo,Vistara,No,Operating Indian scheduled air carrier holding valid DGCA Air Operator Certificate (AOC).
+aircraft_type,VARCHAR(30) / Categorical,Airbus A320neo,Boeing 737 MAX 8,Boeing 787-8/9,No,"ICAO airframe designation model indicating technical capacity, engine specifications, and operational envelope."
+flight_phase,VARCHAR(30) / Categorical,Takeoff & Initial Climb,En-Route / Cruise,Descent & Approach,No,Standard operational flight regime defined under ICAO Annex 6 during which the occurrence took place.
+altitude_ft,INTEGER,36000,4200,0,No,"Indicated pressure altitude above Mean Sea Level (MSL) in feet at time of occurrence (0 to 41,000 ft)."
+airspeed_kts,INTEGER,440,160,25,No,Calibrated airspeed (CAS) measured in nautical miles per hour (knots) recorded by FDR/telemetry.
+peak_g_force,FLOAT / Numeric(3;2),1.05,2.14,0.72,No,Maximum vertical acceleration (g-load factor) experienced by airframe during flight dynamic upset or touchdown.
+category,VARCHAR(60) / Categorical,Bird Strike / FOD,Turbulence Excursion,Tabletop Runway Visual Illusion,No,Primary taxonomy safety classification mapped against DGCA and ICAO occurrence reporting categories.
+severity,INTEGER (1–5),1,3,5,No,"ICAO Doc 9859 severity index: 1 (Negligible), 2 (Minor), 3 (Major), 4 (Hazardous), 5 (Catastrophic)."
+likelihood,CHAR(1) (A–E),A,C,E,No,"ICAO Doc 9859 frequency probability rating: A (Extremely Improbable), B (Improbable), C (Remote), D (Occasional), E (Frequent)."
+risk_rating,VARCHAR(15) / Categorical,acceptable,tolerable,intolerable,No,Composite risk classification calculated from 5x5 matrix evaluating whether immediate mitigation (CAPA) is mandated.
+hfacs_tier,VARCHAR(40) / Categorical,Level 1: Unsafe Acts,Level 2: Preconditions,Level 4: Organizational Influences,No,Human Factors Analysis and Classification System (HFACS) operational causal hierarchy tier.
+status,VARCHAR(35) / Categorical,Triage / Under Review,CAPA Assigned,Closed / Verified by DGCA,No,Regulatory workflow lifecycle status tracking mandatory safety corrective action completion.

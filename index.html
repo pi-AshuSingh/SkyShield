@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#070a12" />
+  <title>SkyShield Bharat — National Aviation Safety Intelligence System | DGCA CAR & ICAO SMS</title>
+  <meta name="description" content="SkyShield Bharat captures civil aviation safety incidents across Indian FIRs, executes interactive 5-Whys, HFACS and Bow-Tie root-cause analyses, and produces DGCA CAR Section 5 and ICAO Annex 19 compliance dashboards." />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="SkyShield Bharat — National Aviation Safety Intelligence System" />
+  <meta property="og:description" content="Civil Aviation Safety Management System (SMS), interactive root-cause investigation workbench, and DGCA/ICAO regulatory audit dashboards." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts: Space Grotesk, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/rca.css" />
+  <link rel="stylesheet" href="css/bowtie.css" />
+  <link rel="stylesheet" href="css/incidents.css" />
+  <link rel="stylesheet" href="css/modal.css" />
+  <link rel="icon" type="image/jpeg" href="assets/skyshield-logo.jpg" />
+</head>
+<body>
+  <div id="app">
+    <!-- Header & Flight Telemetry Ticker -->
+    <div id="header-root"></div>
+
+    <!-- Main Views Container -->
+    <main class="main-content" id="main-content" role="main">
+      <!-- 1. Safety Dashboard Tab Panel -->
+      <section class="tab-panel" data-tab-content="dashboard" aria-label="Aviation Safety Dashboard">
+        <!-- Top Aerodrome Radar & ICAO Risk Matrix Grid -->
+        <div class="dashboard-grid">
+          <div id="risk-matrix-root"></div>
+          <div id="radar-scope-root"></div>
+        </div>
+
+        <!-- Analytics Charts Grid -->
+        <div id="analytics-charts-root"></div>
+      </section>
+
+      <!-- 2. Root-Cause Analysis (RCA) Workbench Tab Panel -->
+      <section class="tab-panel hidden" data-tab-content="workbench" aria-label="Root Cause Analysis Workbench">
+        <div id="rca-workbench-root"></div>
+      </section>
+
+      <!-- 3. Incident Log Tab Panel -->
+      <section class="tab-panel hidden" data-tab-content="incidents" aria-label="Incident Register">
+        <div id="incident-list-root"></div>
+      </section>
+
+      <!-- 4. CAPA Action Tracker Tab Panel -->
+      <section class="tab-panel hidden" data-tab-content="capa" aria-label="CAPA Action Tracker">
+        <div id="capa-tracker-root"></div>
+      </section>
+
+      <!-- 5. Regulatory Compliance & Audit Dossier Tab Panel -->
+      <section class="tab-panel hidden" data-tab-content="compliance" aria-label="Regulatory Compliance Dossier">
+        <div id="audit-report-root"></div>
+      </section>
+    </main>
+
+    <!-- Modal: Mandatory Occurrence Report (MOR) Filing -->
+    <dialog id="dialog-incident-form" aria-labelledby="form-modal-title"></dialog>
+    <dialog id="dialog-auth" aria-labelledby="auth-title"></dialog>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+      <div class="footer-left">
+        <span>© 2026 SkyShield Bharat — National Civil Aviation Safety Management System. Directorate General of Civil Aviation (DGCA) Aligned.</span>
+        <div class="footer-compliance-tags">
+          <span class="footer-tag">DGCA CAR SEC-5 (AIR SAFETY)</span>
+          <span class="footer-tag">AAIB INDIA OCCURRENCE COMPLIANT</span>
+          <span class="footer-tag">eGCA SMS INTEGRATED</span>
+          <span class="footer-tag">ICAO ANNEX 19 (SMS)</span>
+          <span class="footer-tag">AAI ATM/CNS CONFORMANT</span>
+        </div>
+      </div>
+      <div class="footer-right">
+        <span class="mono">SYSTEM HEALTH: NOMINAL • LATENCY: 18ms</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Main ES Module Script -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
+

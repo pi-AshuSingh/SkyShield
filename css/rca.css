@@ -1,0 +1,490 @@
+/**
+ * SkyShield - Root-Cause Analysis (RCA) Workbench Styles
+ * 5-Whys Causal Tree, HFACS Matrix & Telemetry
+ */
+
+.workbench-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Ribbon */
+.workbench-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.ribbon-selector-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 320px;
+}
+
+.ribbon-label {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--cyan-primary);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.incident-switcher {
+  flex: 1;
+  background: rgba(10, 16, 28, 0.9);
+  border: 1px solid var(--border-cyan);
+  color: var(--text-bright);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  outline: none;
+  font-weight: 600;
+}
+
+.ribbon-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.ribbon-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Context Card */
+.incident-context-card {
+  background: linear-gradient(135deg, rgba(16, 26, 48, 0.8) 0%, rgba(10, 16, 30, 0.9) 100%);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--cyan-primary);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.context-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 0.65rem;
+  line-height: 1.35;
+}
+
+.context-narrative {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.context-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.ctx-tag {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ctx-tag strong {
+  color: var(--cyan-primary);
+}
+
+/* RCA Nav Tabs */
+.rca-nav-tabs {
+  display: flex;
+  gap: 0.65rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.rca-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.rca-tab:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.rca-tab.active {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.5);
+  color: #c084fc;
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.2);
+}
+
+.tab-indicator-badge {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  padding: 0.15rem 0.45rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+}
+
+.rca-subtab-container {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+}
+
+/* Lead Info */
+.section-lead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.lead-text h3 {
+  font-size: 1.1rem;
+  color: var(--text-bright);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.lead-text p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* 5-Whys Diagram */
+.why-tree-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.why-node-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.why-node-card {
+  width: 100%;
+  background: rgba(12, 19, 34, 0.9);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  transition: all var(--transition-fast);
+}
+
+.why-node-card:focus-within, .why-node-card:hover {
+  border-color: var(--border-cyan);
+  box-shadow: 0 4px 18px rgba(0, 240, 255, 0.15);
+}
+
+.terminal-node .why-node-card {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1.5px solid var(--border-red);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.25);
+}
+
+.why-node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.why-badge {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  background: rgba(0, 240, 255, 0.12);
+  color: var(--cyan-primary);
+  border-radius: 4px;
+}
+
+.badge-root {
+  background: var(--crimson-bg);
+  color: #fca5a5;
+  border: 1px solid var(--border-red);
+}
+
+.btn-delete-node {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-delete-node:hover {
+  color: var(--crimson-alert);
+}
+
+.why-node-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.why-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.why-lbl {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.why-input {
+  width: 100%;
+  background: rgba(6, 10, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.why-input:focus {
+  border-color: var(--cyan-primary);
+  background: rgba(6, 10, 18, 1);
+}
+
+.why-connector-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.4rem 0;
+  color: var(--cyan-primary);
+  opacity: 0.7;
+}
+
+.arrow-line {
+  width: 2px;
+  height: 18px;
+  background: linear-gradient(180deg, var(--cyan-primary) 0%, rgba(0, 240, 255, 0.2) 100%);
+}
+
+.arrow-tip {
+  font-size: 0.7rem;
+  margin-top: -3px;
+}
+
+.connector-label {
+  font-size: 0.58rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  margin-top: 2px;
+}
+
+/* HFACS Section */
+.hfacs-summary-pill {
+  font-size: 0.78rem;
+  color: #c084fc;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+}
+
+.hfacs-tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 960px) {
+  .hfacs-tiers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hfacs-tier-card {
+  background: rgba(12, 18, 32, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+}
+
+.tier-card-header h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--cyan-primary);
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 0.45rem;
+}
+
+.tier-tags-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.hfacs-tag-pill {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.hfacs-tag-pill:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-medium);
+}
+
+.hfacs-tag-pill.active {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.2);
+}
+
+.tag-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+
+.hfacs-tag-pill.active .tag-top {
+  color: #e9d5ff;
+}
+
+.tag-status-icon {
+  font-family: var(--font-mono);
+  font-weight: 800;
+}
+
+.tag-desc {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+/* FDR Telemetry */
+.fdr-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1000px) {
+  .fdr-dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.telemetry-gauge-card {
+  background: rgba(8, 14, 26, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.gauge-param-name {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-bottom: 0.35rem;
+}
+
+.gauge-param-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--cyan-primary);
+  margin-bottom: 0.75rem;
+}
+
+.wave-track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.wave-fill {
+  height: 100%;
+  width: 75%;
+  background: linear-gradient(90deg, var(--cyan-primary), #ef4444);
+}
+
+.telemetry-plot-card {
+  background: rgba(6, 10, 18, 0.95);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.plot-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-dim);
+}
+
+.plot-svg {
+  width: 100%;
+  height: 120px;
+}
+
+.fdr-sync-badge {
+  font-size: 0.72rem;
+  color: var(--emerald-safe);
+  background: var(--emerald-bg);
+  border: 1px solid var(--border-green);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}

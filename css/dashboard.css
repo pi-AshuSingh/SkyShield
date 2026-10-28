@@ -1,0 +1,828 @@
+/**
+ * SkyShield - Dashboard, Risk Matrix & Analytics Styles
+ */
+
+/* Dashboard Layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1280px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card Base */
+.matrix-card, .radar-card, .analytics-card, .incident-log-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem;
+  box-shadow: var(--shadow-md);
+  transition: border-color var(--transition-fast);
+}
+
+.matrix-card:hover, .radar-card:hover, .analytics-card:hover {
+  border-color: var(--border-medium);
+}
+
+/* Active filter pill */
+.active-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid var(--border-cyan);
+  color: var(--cyan-primary);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.btn-clear-pill {
+  background: none;
+  border: none;
+  color: var(--cyan-primary);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.hint-text {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+/* Risk Stats Strip */
+.risk-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.risk-stat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.75rem;
+}
+
+.stat-intolerable {
+  background: var(--crimson-bg);
+  border-color: var(--border-red);
+  color: #fca5a5;
+}
+
+.stat-tolerable {
+  background: var(--amber-bg);
+  border-color: var(--border-amber);
+  color: #fde047;
+}
+
+.stat-acceptable {
+  background: var(--emerald-bg);
+  border-color: var(--border-green);
+  color: #86efac;
+}
+
+.risk-stat-item .stat-value {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+/* 5x5 Matrix Table */
+.matrix-table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: rgba(6, 10, 18, 0.7);
+}
+
+.risk-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.risk-matrix-table th, .risk-matrix-table td {
+  padding: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.matrix-corner {
+  background: rgba(16, 25, 42, 0.9);
+  padding: 0.5rem;
+  min-width: 130px;
+}
+
+.corner-split {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  color: var(--cyan-primary);
+  text-align: left;
+}
+
+.col-likelihood-header {
+  background: rgba(16, 25, 42, 0.8);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  width: 16%;
+}
+
+.likelihood-code {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--cyan-primary);
+}
+
+.likelihood-name {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.row-severity-header {
+  background: rgba(16, 25, 42, 0.8);
+  text-align: left;
+  padding-left: 0.85rem;
+}
+
+.sev-level {
+  font-size: 0.95rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--text-bright);
+}
+
+.sev-label {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+/* Matrix Cells */
+.matrix-cell {
+  position: relative;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+  height: 52px;
+}
+
+.cell-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 100%;
+}
+
+.cell-code {
+  font-size: 0.78rem;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+.cell-count-badge {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.cell-count-badge.intolerable {
+  background: #ffffff;
+  color: #b91c1c;
+}
+
+.cell-count-badge.tolerable {
+  background: #ffffff;
+  color: #b45309;
+}
+
+.cell-count-badge.acceptable {
+  background: #ffffff;
+  color: #047857;
+}
+
+.cell-empty-dot {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.2rem;
+}
+
+/* Cell Ratings Colors */
+.cell-intolerable {
+  background: rgba(239, 68, 68, 0.22);
+  color: #fca5a5;
+}
+
+.cell-intolerable:hover {
+  background: rgba(239, 68, 68, 0.38);
+  box-shadow: inset 0 0 14px rgba(239, 68, 68, 0.5);
+}
+
+.cell-tolerable {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fde047;
+}
+
+.cell-tolerable:hover {
+  background: rgba(245, 158, 11, 0.35);
+  box-shadow: inset 0 0 14px rgba(245, 158, 11, 0.5);
+}
+
+.cell-acceptable {
+  background: rgba(16, 185, 129, 0.16);
+  color: #86efac;
+}
+
+.cell-acceptable:hover {
+  background: rgba(16, 185, 129, 0.3);
+  box-shadow: inset 0 0 14px rgba(16, 185, 129, 0.5);
+}
+
+/* Selected Cell Highlight */
+.matrix-cell.cell-selected {
+  outline: 2px solid var(--cyan-primary);
+  outline-offset: -2px;
+  box-shadow: 0 0 18px var(--cyan-primary);
+  z-index: 5;
+}
+
+.matrix-legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.legend-box {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.legend-box.red { background: var(--crimson-alert); }
+.legend-box.amber { background: var(--amber-warning); }
+.legend-box.green { background: var(--emerald-safe); }
+
+/* Analytics Grid */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 1100px) {
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Trend Card & SVG */
+.trend-legend {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.7rem;
+}
+
+.legend-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-dim);
+}
+
+.legend-chip .chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.legend-chip.red .chip-dot { background: var(--crimson-alert); }
+.legend-chip.amber .chip-dot { background: var(--amber-warning); }
+.legend-chip.green .chip-dot { background: var(--emerald-safe); }
+
+.trend-svg {
+  width: 100%;
+  height: 190px;
+  overflow: visible;
+}
+
+.bar-acc { fill: rgba(16, 185, 129, 0.7); }
+.bar-tol { fill: rgba(245, 158, 11, 0.75); }
+.bar-intol { fill: rgba(239, 68, 68, 0.85); }
+
+.chart-x-label {
+  fill: var(--text-dim);
+  font-size: 10px;
+}
+
+.chart-col-value {
+  fill: var(--text-main);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Donut Chart */
+.donut-chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.donut-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+}
+
+.donut-svg {
+  transform: rotate(-90deg);
+}
+
+.donut-slice {
+  transition: stroke-width var(--transition-fast), filter var(--transition-fast);
+  cursor: pointer;
+}
+
+.donut-slice:hover {
+  stroke-width: 32px;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.donut-center-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+  padding: 1rem;
+}
+
+.donut-center-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--cyan-primary);
+}
+
+.donut-center-title {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+}
+
+.donut-legend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.legend-color-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.legend-phase-name {
+  flex: 1;
+}
+
+/* Pareto Bars */
+.pareto-bars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pareto-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pareto-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+}
+
+.pareto-name {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.pareto-val {
+  color: var(--text-dim);
+}
+
+.pareto-track {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.pareto-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan-primary) 0%, #3b82f6 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fleet Meter */
+.fleet-meter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.fleet-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fleet-badge-box {
+  width: 140px;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--text-main);
+}
+
+.fleet-plane-icon {
+  color: var(--cyan-primary);
+  font-size: 0.85rem;
+}
+
+.fleet-bar-wrapper {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.fleet-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+  border-radius: var(--radius-full);
+}
+
+.fleet-count {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  width: 30px;
+  text-align: right;
+}
+
+/* Airport Radar Scope Component */
+.radar-content-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .radar-content-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.radar-scope-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radar-screen {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, #030812 75%);
+  border: 2px solid var(--border-cyan);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  overflow: hidden;
+}
+
+/* Animated Radar Sweep */
+.radar-sweep-beam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110px;
+  height: 110px;
+  transform-origin: top left;
+  background: conic-gradient(from 0deg, rgba(0, 240, 255, 0.4) 0deg, transparent 65deg);
+  border-radius: 100% 0 0 0;
+  animation: radarSweep 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 240, 255, 0.2);
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ring-1 { width: 33%; height: 33%; }
+.ring-2 { width: 66%; height: 66%; }
+.ring-3 { width: 96%; height: 96%; }
+
+.radar-crosshair-h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 240, 255, 0.2);
+  pointer-events: none;
+}
+
+.radar-crosshair-v {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(0, 240, 255, 0.2);
+  pointer-events: none;
+}
+
+.radar-heading-label {
+  position: absolute;
+  font-size: 0.55rem;
+  font-family: var(--font-mono);
+  color: var(--cyan-primary);
+  pointer-events: none;
+}
+
+.radar-heading-label.n { top: 4px; left: 50%; transform: translateX(-50%); }
+.radar-heading-label.s { bottom: 4px; left: 50%; transform: translateX(-50%); }
+.radar-heading-label.w { left: 4px; top: 50%; transform: translateY(-50%); }
+.radar-heading-label.e { right: 4px; top: 50%; transform: translateY(-50%); }
+
+/* Blips on radar */
+.radar-blip {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.blip-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--cyan-primary);
+  box-shadow: 0 0 6px var(--cyan-primary);
+}
+
+.blip-intolerable .blip-core {
+  background-color: var(--crimson-alert);
+  box-shadow: 0 0 8px var(--crimson-alert);
+}
+
+.blip-ripple {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--cyan-primary);
+  opacity: 0;
+  animation: blipPing 2.5s infinite;
+}
+
+.blip-intolerable .blip-ripple {
+  border-color: var(--crimson-alert);
+  animation: blipPing 1.4s infinite;
+}
+
+@keyframes blipPing {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.blip-tag {
+  position: absolute;
+  left: 10px;
+  top: -4px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1px 3px;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.blip-active .blip-core {
+  transform: scale(1.4);
+  outline: 2px solid #fff;
+}
+
+/* Aerodrome Dossier Panel */
+.aerodrome-dossier {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.dossier-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.65rem;
+}
+
+.apt-code-badge {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--cyan-primary);
+}
+
+.apt-city {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.risk-score-gauge {
+  text-align: right;
+}
+
+.gauge-label {
+  font-size: 0.62rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  display: block;
+}
+
+.gauge-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.dossier-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.ds-lbl {
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  display: block;
+}
+
+.ds-val {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* METAR */
+.metar-card {
+  background: rgba(14, 25, 46, 0.6);
+  border: 1px solid var(--border-cyan);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+}
+
+.metar-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--cyan-primary);
+  margin-bottom: 0.35rem;
+  font-family: var(--font-mono);
+}
+
+.live-pill {
+  font-size: 0.58rem;
+  background: rgba(0, 240, 255, 0.2);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.metar-raw {
+  font-size: 0.72rem;
+  color: #f1f5f9;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+  line-height: 1.4;
+}
+
+.metar-decoded {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* Mini Occurrences for airport */
+.apt-incidents-mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.apt-incident-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.65rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.apt-incident-item:hover {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: var(--border-cyan);
+}
+
+.mini-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  margin-bottom: 0.2rem;
+}
+
+.mini-flight {
+  font-weight: 700;
+  color: var(--cyan-primary);
+}
+
+.mini-risk {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.mini-risk.intolerable { color: var(--crimson-alert); }
+.mini-risk.tolerable { color: var(--amber-warning); }
+
+.mini-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-footer {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}

@@ -1,0 +1,271 @@
+/**
+ * SkyShield - Aviation Bow-Tie Risk Model Visualizer Styles
+ */
+
+.bowtie-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bowtie-legend {
+  display: flex;
+  gap: 0.85rem;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+}
+
+.bt-badge-status {
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.bt-badge-status.effective {
+  background: var(--emerald-bg);
+  color: var(--emerald-safe);
+  border: 1px solid var(--border-green);
+}
+
+.bt-badge-status.degraded {
+  background: var(--amber-bg);
+  color: var(--amber-warning);
+  border: 1px solid var(--border-amber);
+}
+
+.bt-badge-status.failed {
+  background: var(--crimson-bg);
+  color: var(--crimson-alert);
+  border: 1px solid var(--border-red);
+}
+
+/* Bow-Tie 5-Column Board */
+.bowtie-diagram-board {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1.4fr 1.25fr 1fr;
+  gap: 0.85rem;
+  background: rgba(8, 13, 24, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1rem;
+  align-items: center;
+  position: relative;
+  overflow-x: auto;
+}
+
+@media (max-width: 1200px) {
+  .bowtie-diagram-board {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.bowtie-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 180px;
+}
+
+.col-title {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--cyan-primary);
+  text-align: center;
+  letter-spacing: 0.08em;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.nodes-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+/* Threat Node */
+.threat-node {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: #fde68a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.threat-node .node-icon {
+  color: var(--amber-warning);
+}
+
+/* Barrier Node */
+.barrier-node {
+  background: rgba(14, 22, 38, 0.9);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  border: 1.5px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  user-select: none;
+}
+
+.barrier-node:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Status variants */
+.barrier-node.status-effective {
+  border-color: var(--border-green);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.barrier-node.status-effective .barrier-status-tag {
+  background: var(--emerald-bg);
+  color: #86efac;
+  border: 1px solid var(--border-green);
+}
+
+.barrier-node.status-degraded {
+  border-color: var(--border-amber);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.barrier-node.status-degraded .barrier-status-tag {
+  background: var(--amber-bg);
+  color: #fde047;
+  border: 1px solid var(--border-amber);
+}
+
+.barrier-node.status-failed {
+  border-color: var(--border-red);
+  background: rgba(239, 68, 68, 0.16);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.2);
+}
+
+.barrier-node.status-failed .barrier-status-tag {
+  background: var(--crimson-bg);
+  color: #fca5a5;
+  border: 1px solid var(--border-red);
+}
+
+.barrier-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.barrier-type {
+  font-size: 0.62rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+.barrier-status-tag {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.barrier-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.35;
+}
+
+.barrier-note {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+  font-style: italic;
+  border-top: 1px dotted rgba(255, 255, 255, 0.1);
+  padding-top: 0.25rem;
+}
+
+/* Center Knot (Top Event) */
+.top-event-knot {
+  position: relative;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, rgba(15, 23, 42, 0.95) 75%);
+  border: 2px solid var(--crimson-alert);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.35);
+  animation: knotPulse 3s ease-in-out infinite;
+}
+
+@keyframes knotPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(239, 68, 68, 0.6); }
+}
+
+.knot-badge {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  color: var(--crimson-alert);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+.knot-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.knot-alert {
+  font-size: 0.68rem;
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+/* Consequences */
+.consequence-node {
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.consequence-node.prevented {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #86efac;
+}
+
+.consequence-node.mitigated {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+}
+
+.cons-status {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cons-text {
+  font-weight: 600;
+}
