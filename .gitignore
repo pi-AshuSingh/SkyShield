@@ -27,3 +27,31 @@ yarn-error.log*
 
 # Logs
 *.log
+
+# Academic & LMS Submission Deliverables (Kept local, excluded from deployment)
+*.docx
+*.pdf
+EDA_Report*
+Project_Synopsis*
+
+# Generator Scripts & Notebooks
+generate_synopsis.py
+generate_eda_pdf.py
+generate_architecture_diagram.py
+generate_incidents.py
+build_colab_notebook.py
+eda_analysis.py
+firebase_dataset_sync.py
+*.ipynb
+
+# Report Plots & Visualizations
+eda_plots/
+eda_visualisations.png
+architecture_diagram.png
+system_architecture_diagram.png
+
+# Raw Static Data Dumps
+skyshield_5000_incidents.csv
+skyshield_5000_incidents.json
+dataset.csv
+data_dictionary.csv

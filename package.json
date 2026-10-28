@@ -1,29 +1,25 @@
 {
-  "name": "skyshield-bharat-aviation-safety",
+  "name": "skyshield-aviation-safety",
   "version": "2.0.0",
-  "description": "SkyShield Bharat: National Civil Aviation Safety Intelligence System, DGCA CAR Sec 5, Root-Cause Analysis (5-Whys, HFACS, Bow-Tie) & eGCA Compliance Dashboard",
-  "main": "index.html",
+  "description": "SkyShield: Aviation Safety & Incident Reporting - Captures aviation safety incidents, performs root-cause analysis and produces compliance/safety dashboards.",
+  "main": "server.py",
   "type": "module",
   "scripts": {
-    "start": "npx -y serve -l 5173 .",
-    "dev": "npx -y serve -l 5173 .",
-    "generate:data": "python3 generate_incidents.py"
+    "start": "uvicorn server:app --host 0.0.0.0 --port 8000",
+    "dev": "uvicorn server:app --reload --host 127.0.0.1 --port 8000",
+    "serve:static": "npx -y serve -l 5173 ."
   },
   "keywords": [
     "aviation-safety",
     "dgca-india",
-    "egca-sms",
     "incident-reporting",
     "root-cause-analysis",
     "5-whys",
     "hfacs",
     "bowtie-analysis",
     "icao-annex-19",
-    "capa-tracker",
-    "air-india",
-    "indigo",
     "safety-dashboard"
   ],
-  "author": "SkyShield Bharat Operations",
+  "author": "Ashutosh Kumar",
   "license": "MIT"
 }

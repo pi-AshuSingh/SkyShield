@@ -8,10 +8,13 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**",
-      "skyshield_sms.db",
-      "server.py",
-      "generate_incidents.py",
-      "build_colab_notebook.py"
+      "*.py",
+      "*.db",
+      "*.csv",
+      "*.docx",
+      "*.pdf",
+      "Procfile",
+      "requirements.txt"
     ]
   }
 }

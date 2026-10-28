@@ -10,18 +10,16 @@
 
 ## ✈️ Overview
 
-**SkyShield** is an enterprise-grade National Aviation Safety & Airworthiness Intelligence System (NASIS) designed in accordance with **DGCA Civil Aviation Requirements (CAR) Section 5, Series C, Part I** and **ICAO Annex 19 (Doc 9859 Safety Management Manual)**. 
+**SkyShield** is an enterprise-grade National Aviation Safety & Airworthiness Intelligence System (NASIS) engineered in accordance with **DGCA Civil Aviation Requirements (CAR) Section 5, Series C, Part I** and **ICAO Annex 19 (Doc 9859 Safety Management Manual)**.
 
-The platform captures civil aviation safety occurrences, performs automated root-cause analysis (5-Whys and HFACS 4-tier taxonomy), and produces real-time regulatory compliance and airworthiness dashboards across Indian airspace.
-
-![System Architecture](system_architecture_diagram.png)
+The platform provides a streamlined full-stack architecture for capturing civil aviation safety occurrences, performing automated root-cause analysis (5-Whys and HFACS 4-tier taxonomy), and rendering real-time regulatory compliance and airworthiness dashboards across Indian airspace.
 
 ---
 
 ## 🚀 Key Features
 
 1. **Digital DGCA Form CA-919 Telemetry Pipeline:**
-   - Seamless occurrence reporting interface capturing flight parameters, airframe metrics, weather encounters, and pilot narratives.
+   - Real-time occurrence reporting interface capturing flight parameters, airframe metrics, weather encounters, and pilot narratives.
    - Zero-null validation ensuring 100% adherence to DGCA mandatory reporting guidelines.
 
 2. **ICAO Annex 19 Bivariate 5x5 Risk Tolerability Matrix:**
@@ -36,14 +34,14 @@ The platform captures civil aviation safety occurrences, performs automated root
      - **Level 4: Organizational Influences** (11.6%)
 
 4. **Recursive 5-Whys Root-Cause Analysis (RCA) Engine:**
-   - Structured JSON diagnostic trees drilling down from surface telemetry alerts to underlying latent organizational root causes.
+   - Structured diagnostic trees drilling down from surface telemetry alerts to underlying latent organizational root causes.
 
 5. **Interactive Aeronautical Geospatial Dashboard:**
    - High-performance Leaflet.js mapping with pre-compiled GeoJSON polygons for Indian Flight Information Regions (FIRs): **Delhi (VIDF)**, **Mumbai (VABF)**, **Kolkata (VECF)**, and **Chennai (VOMF)**.
    - Live aerodrome waypoint indexing for major hubs (DEL, BOM, BLR, MAA, HYD, CCU, GOX, COK, IXE, CCJ).
 
 6. **Closed-Loop DGCA CAPA Compliance Tracker:**
-   - Automated routing of all high-risk Intolerable Occurrences (n=260) into mandatory Corrective and Preventive Action (CAPA) mitigation workflows.
+   - Automated routing of all high-risk Intolerable Occurrences into mandatory Corrective and Preventive Action (CAPA) mitigation workflows.
 
 ---
 
@@ -53,91 +51,86 @@ The platform captures civil aviation safety occurrences, performs automated root
 | :--- | :--- |
 | **Frontend / UI** | Semantic HTML5, Vanilla Modern CSS (Cockpit Glassmorphism Dark Mode), Modular JavaScript (ES6+), Responsive Grid & Flexbox |
 | **Geospatial & Mapping** | Leaflet.js v1.9.4, GeoJSON Aeronautical FIR Polygons, SVG Flight Markers |
-| **Backend / API Gateway** | Python 3.11+, FastAPI (ASGI Framework), Pydantic v2 Schema Modeling, Uvicorn Server |
+| **Backend / API Gateway** | Python 3.10+, FastAPI (ASGI Framework), Pydantic v2 Schema Modeling, Uvicorn Server |
 | **Database & Persistence** | SQLite3 (`skyshield_sms.db`) with Write-Ahead Logging (WAL) and Composite B-Tree Indexing |
-| **Analytics & Visuals** | Pandas 2.2, NumPy, Matplotlib 3.8, Seaborn, ReportLab 4.x (`NumberedCanvas`) |
-| **Compliance & Standards** | DGCA CAR Section 5 Series C Part I, ICAO Annex 19 (Doc 9859), HFACS, Digital Personal Data Protection (DPDP) Act 2023 |
+| **Cloud & Deployment** | Render, Railway, Vercel, Firebase Hosting, Cloud Firestore, Docker/Procfile Ready |
+| **Compliance & Standards** | DGCA CAR Section 5 Series C Part I, ICAO Annex 19 (Doc 9859), HFACS, DPDP Act 2023 |
 
 ---
 
-## 📊 Exploratory Data Analysis & Visualizations
-
-The platform includes rigorous statistical analysis across **5,000 DGCA occurrence records (2024–2026)**:
-
-![EDA Visualisations](eda_visualisations.png)
-
-1. **Temporal Trends & Fleet Distribution:** Ingestion velocity across Indian scheduled carriers (IndiGo, Air India, Vistara, SpiceJet, Akasa Air, Alliance Air).
-2. **Aerodynamic Flight Safety Envelope:** Calibrated Airspeed (CAS) vs Indicated Pressure Altitude (feet MSL) with normal vertical acceleration load factor excursions (> 2.2G).
-3. **ICAO 5x5 Risk Matrix Heatmap:** Cross-tabulated distribution of severity and likelihood ratings with automated CAPA triggers.
-4. **HFACS & CAPA Lifecycle:** Proportional distribution of human-factors tiers and investigation resolution states.
-
----
-
-## 📁 Repository Structure & Deliverables
+## 📁 Repository Structure (Optimized for One-Click Deployment)
 
 ```
 SkyShield/
-├── index.html                                 # Flight Deck Web Interface
-├── js/                                        # Modular JavaScript Application & Components
+├── index.html         # Flight Deck Web Interface (Responsive UI)
+├── js/                # Modular JavaScript (Components, State, Radar, RCA)
 │   ├── app.js
+│   ├── state.js
+│   ├── firebase.js
+│   ├── data.js
 │   └── components/
-├── css/                                       # Responsive Cockpit Glassmorphism Styles
-│   ├── main.css
-│   └── components/
-├── server.py                                  # FastAPI Production REST Backend
-├── dataset.csv                                # Enriched 5,000-Row Operational Dataset (< 2 MB)
-├── data_dictionary.csv                        # Technical Schema & Column Documentation
-├── EDA_Report_AshutoshKumar_2300321530046.pdf # Executive 4-Page Publication-Grade PDF Report
-├── Project_Synopsis_AshutoshKumar_2300321530046.docx # Populated & Justified Project Synopsis
-├── generate_synopsis.py                       # Automated Synopsis DOCX Generator
-├── generate_eda_pdf.py                        # Automated ReportLab 4-Page PDF Generator
-├── eda_analysis.py                            # Statistical EDA & Visualizations Script
-├── generate_architecture_diagram.py           # 300 DPI System Architecture Generator
-├── system_architecture_diagram.png            # System Architecture & DFD Diagram
-├── eda_visualisations.png                     # Combined 4-Chart Analytical Visualizations
-├── eda_plots/                                 # High-Resolution Publication Plots
-├── skyshield_sms.db                           # SQLite3 SMS Relational Database (WAL Mode)
-└── README.md                                  # Project Documentation
+├── css/               # Responsive Cockpit Glassmorphism Styles
+│   ├── index.css
+│   ├── variables.css
+│   ├── dashboard.css
+│   ├── incidents.css
+│   ├── bowtie.css
+│   ├── modal.css
+│   └── rca.css
+├── assets/            # App Assets & Branding
+│   └── skyshield-logo.jpg
+├── server.py          # FastAPI Production REST Backend & Static File Server
+├── skyshield_sms.db   # Embedded SQLite3 SMS Database with Indexed Records
+├── requirements.txt   # Minimal Production Dependencies (FastAPI, Uvicorn, Pydantic)
+├── Procfile           # 1-Click Cloud Deployment Process Specification
+├── package.json       # Project Metadata & Run Scripts
+├── firebase.json      # Firebase Hosting & Firestore Configuration
+├── firestore.rules    # Firestore Security Rules
+└── README.md          # Project Documentation
 ```
 
 ---
 
-## ⚙️ Quick Start & Installation
+## 🚀 Quick Deployment Guide
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/pi-AshuSingh/SkyShield.git
-cd SkyShield
-```
+### Option 1: One-Click Cloud Deployment (Render / Railway / Koyeb)
 
-### 2. Install Python Dependencies
-```bash
-pip install -r requirements.txt
-# Or install core packages:
-pip install fastapi uvicorn pydantic pandas numpy matplotlib seaborn reportlab python-docx
-```
+1. Connect your GitHub repository to [Render](https://render.com) or [Railway](https://railway.app).
+2. Select **Web Service** with:
+   - **Environment:** Python 3
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `uvicorn server:app --host 0.0.0.0 --port $PORT` (auto-detected from `Procfile`)
+3. Your application is live with full REST API and frontend dashboard!
 
-### 3. Run the Backend API Server
-```bash
-python3 server.py
-# Server runs at http://localhost:8000
-# Interactive API docs available at http://localhost:8000/docs
-```
+---
 
-### 4. Launch the Frontend
-Open `index.html` in any modern web browser or serve via static server:
-```bash
-python3 -m http.server 3000
-# Open http://localhost:3000
-```
+### Option 2: Run Locally with Python (Recommended)
 
-### 5. Re-generate Deliverables & Visuals
-```bash
-python3 generate_architecture_diagram.py   # Regenerate architecture diagram
-python3 eda_analysis.py                   # Run EDA & generate charts
-python3 generate_eda_pdf.py                # Generate 4-page executive EDA PDF
-python3 generate_synopsis.py               # Generate populated synopsis DOCX
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/pi-AshuSingh/SkyShield.git
+   cd SkyShield
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Start the server:**
+   ```bash
+   python3 server.py
+   ```
+   - Application: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+   - Interactive API Docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+---
+
+### Option 3: Static Frontend Hosting (Vercel / GitHub Pages / Firebase)
+
+Because `index.html` connects seamlessly with client-side state and cloud sync:
+- **Firebase:** Run `firebase deploy --only hosting`
+- **Vercel:** Import Git repo with zero configuration.
 
 ---
 
